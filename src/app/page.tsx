@@ -1,3 +1,11 @@
+"use client";
+
+import UpComingMatches from "@/components/UpComingMatches";
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <UpComingMatches />
+    </main>
+  );
 }
