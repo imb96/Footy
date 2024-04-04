@@ -4,16 +4,20 @@ interface MatchCardProps {
   date: string;
   homeTeamName: string;
   homeTeamCrest: string;
+  homeTeamScore: string;
   awayTeamName: string;
   awayTeamCrest: string;
+  awayTeamScore: string;
 }
 
 const MatchCard = ({
   date,
   homeTeamName,
   homeTeamCrest,
+  homeTeamScore,
   awayTeamName,
   awayTeamCrest,
+  awayTeamScore,
 }: MatchCardProps) => {
   return (
     <tr className="table-row">
@@ -43,7 +47,9 @@ const MatchCard = ({
         ) : null}
         <span className="truncate text-xs">{awayTeamName}</span>
       </td>
-      <td className="p-1">-:-</td>
+      <td className="p-1">
+        {homeTeamScore || "-"}:{awayTeamScore || "-"}
+      </td>
     </tr>
   );
 };
