@@ -24,20 +24,13 @@ const UpComingMatches = () => {
     <div>
       {data ? (
         <table>
-          <thead className="table-header-group align-middle p-10">
-            <tr>
-              <th className="table-cell float-left">Date</th>
-              <th className="table-cell" colSpan={3}>
-                Match
-              </th>
-              <th className="table-cell">Score</th>
-            </tr>
-          </thead>
+          <thead className="table-header-group align-middle p-10"></thead>
           <tbody className="table-row-group align-middle">
             {data.map((match) => (
               <MatchCard
                 key={match.id}
                 date={match.utcDate}
+                status={match.status}
                 homeTeamName={match.homeTeam.name}
                 homeTeamCrest={match.homeTeam.crest}
                 homeTeamScore={match.score.fullTime.home}

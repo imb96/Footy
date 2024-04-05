@@ -2,6 +2,7 @@ import Image from "next/image";
 import formatDate from "@/utils/formatDate";
 interface MatchCardProps {
   date: string;
+  status: string;
   homeTeamName: string;
   homeTeamCrest: string;
   homeTeamScore: string;
@@ -10,8 +11,15 @@ interface MatchCardProps {
   awayTeamScore: string;
 }
 
+const formatScore = ({ status, score }: { status: string; score: string }) => {
+  if (status === "TIMED") {
+    return "-";
+  } else return score;
+};
+
 const MatchCard = ({
   date,
+  status,
   homeTeamName,
   homeTeamCrest,
   homeTeamScore,
@@ -35,7 +43,13 @@ const MatchCard = ({
         ) : null}
         <span className="truncate text-xs">{homeTeamName}</span>
       </td>
-      <td className="px-5">vs</td>
+      <td className="px-5">
+        {formatScore({ status, score: homeTeamScore })}:
+        {formatScore({
+          status,
+          score: awayTeamScore,
+        })}
+      </td>
       <td className="flex gap-1 w-[180px] p-1 items-center">
         {awayTeamCrest ? (
           <Image
@@ -47,8 +61,12 @@ const MatchCard = ({
         ) : null}
         <span className="truncate text-xs">{awayTeamName}</span>
       </td>
-      <td className="p-1">
-        {homeTeamScore || "-"}:{awayTeamScore || "-"}
+      <td
+        className={`text-xs text-center text-white bg-${
+          status === "FINISHED" ? "red-500" : "blue-500"
+        }`}
+      >
+        {status}
       </td>
     </tr>
   );

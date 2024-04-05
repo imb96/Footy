@@ -1,6 +1,7 @@
 export interface Match {
   id: number;
   utcDate: string;
+  status: string;
   homeTeam: {
     name: string;
     crest: string;
