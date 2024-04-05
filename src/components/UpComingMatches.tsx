@@ -22,10 +22,9 @@ const UpComingMatches = () => {
 
   return (
     <div>
-      {data ? (
-        <table>
-          <thead className="table-header-group align-middle p-10"></thead>
-          <tbody className="table-row-group align-middle">
+      {data.length > 0 ? (
+        <div>
+          <div>
             {data.map((match) => (
               <MatchCard
                 key={match.id}
@@ -39,8 +38,8 @@ const UpComingMatches = () => {
                 awayTeamScore={match.score.fullTime.away}
               />
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       ) : (
         <div>Loading...</div>
       )}

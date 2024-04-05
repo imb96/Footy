@@ -28,11 +28,11 @@ const MatchCard = ({
   awayTeamScore,
 }: MatchCardProps) => {
   return (
-    <tr className="table-row">
-      <td className="table-cell p-1">
+    <div className="flex items-center justify-center">
+      <div className="p-1">
         <span className="text-xs">{formatDate(date)}</span>
-      </td>
-      <td className="flex gap-1 w-[180px] p-1 items-center">
+      </div>
+      <div className="flex gap-1 w-[180px] p-1 items-center">
         {homeTeamCrest ? (
           <Image
             src={homeTeamCrest}
@@ -42,15 +42,15 @@ const MatchCard = ({
           />
         ) : null}
         <span className="truncate text-xs">{homeTeamName}</span>
-      </td>
-      <td className="px-5">
+      </div>
+      <div className="px-5">
         {formatScore({ status, score: homeTeamScore })}:
         {formatScore({
           status,
           score: awayTeamScore,
         })}
-      </td>
-      <td className="flex gap-1 w-[180px] p-1 items-center">
+      </div>
+      <div className="flex gap-1 w-[180px] p-1 items-center">
         {awayTeamCrest ? (
           <Image
             src={awayTeamCrest}
@@ -60,15 +60,15 @@ const MatchCard = ({
           />
         ) : null}
         <span className="truncate text-xs">{awayTeamName}</span>
-      </td>
-      <td
+      </div>
+      <div
         className={`text-xs text-center text-white bg-${
           status === "FINISHED" ? "red-500" : "blue-500"
         }`}
       >
         {status}
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 
