@@ -19,7 +19,11 @@ const getUpcomingMatch = async () => {
 
   const upComingMatch = data.matches.filter(
     (match: Match) =>
-      match.competition.code === "PL" || match.competition.code === "CL"
+      match.competition.code === "PL" ||
+      match.competition.code === "CL" ||
+      match.competition.code === "PD" ||
+      match.competition.code === "FL1" ||
+      match.competition.code === "BL1"
   );
 
   return upComingMatch;
