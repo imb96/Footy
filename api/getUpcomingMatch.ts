@@ -22,7 +22,7 @@ const getUpcomingMatch = async () => {
       match.competition.code === "PL" || // 프리미어 리그
       match.competition.code === "CL" || // 챔피언스 리그
       match.competition.code === "FL1" || // 프랑스 리그1
-      match.competition.code === "BL1", // 분데스리가
+      match.competition.code === "BL1" // 분데스리가
   );
 
   return upComingMatch;

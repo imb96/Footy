@@ -4,10 +4,12 @@ export interface Match {
   status: string;
   homeTeam: {
     name: string;
+    shortName: string;
     crest: string;
   };
   awayTeam: {
     name: string;
+    shortName: string;
     crest: string;
   };
   score: {
