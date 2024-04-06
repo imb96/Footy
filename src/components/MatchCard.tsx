@@ -35,7 +35,7 @@ const MatchCard = ({
   return (
     <div className="flex items-center justify-center">
       <div className="p-1">
-        <span className="text-xs">{formatDate(date)}</span>
+        <span className="text-xs truncate">{formatDate(date)}</span>
       </div>
       <div className="flex gap-1 w-[180px] p-1 items-center">
         {homeTeamCrest ? (
@@ -67,7 +67,10 @@ const MatchCard = ({
             height={24}
           />
         ) : null}
-        <span className="truncate text-xs">{awayTeamName}</span>
+        <span className="truncate text-xs hidden md:inline">
+          {awayTeamName}
+        </span>
+        <span className="truncate text-xs md:hidden">{awayTeamShortName}</span>
       </div>
       <div
         className={`text-xs text-center text-white p-1 rounded ${
