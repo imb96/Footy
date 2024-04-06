@@ -32,10 +32,12 @@ const UpComingMatches = () => {
                 status={match.status}
                 homeTeamName={match.homeTeam.name}
                 homeTeamShortName={match.homeTeam.shortName}
+                homeTeamTla={match.homeTeam.tla}
                 homeTeamCrest={match.homeTeam.crest}
                 homeTeamScore={match.score.fullTime.home}
                 awayTeamName={match.awayTeam.name}
                 awayTeamShortName={match.awayTeam.shortName}
+                awayTeamTla={match.awayTeam.tla}
                 awayTeamCrest={match.awayTeam.crest}
                 awayTeamScore={match.score.fullTime.away}
               />

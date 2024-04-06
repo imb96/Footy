@@ -8,10 +8,12 @@ interface MatchCardProps {
   homeTeamCrest: string;
   homeTeamScore: string;
   homeTeamShortName: string;
+  homeTeamTla: string;
   awayTeamName: string;
   awayTeamCrest: string;
   awayTeamScore: string;
   awayTeamShortName: string;
+  awayTeamTla: string;
 }
 
 const formatScore = ({ status, score }: { status: string; score: string }) => {
@@ -25,10 +27,12 @@ const MatchCard = ({
   status,
   homeTeamName,
   homeTeamShortName,
+  homeTeamTla,
   homeTeamCrest,
   homeTeamScore,
   awayTeamName,
   awayTeamShortName,
+  awayTeamTla,
   awayTeamCrest,
   awayTeamScore,
 }: MatchCardProps) => {
@@ -49,7 +53,10 @@ const MatchCard = ({
         <span className="truncate text-xs hidden md:inline">
           {homeTeamName}
         </span>
-        <span className="truncate md:hidden text-xs">{homeTeamShortName}</span>
+        <span className="truncate hidden sm:inline md:hidden text-xs">
+          {homeTeamShortName}
+        </span>
+        <span className="text-xs sm:hidden">{homeTeamTla}</span>
       </div>
       <div className="px-5">
         {formatScore({ status, score: homeTeamScore })}:
@@ -70,7 +77,10 @@ const MatchCard = ({
         <span className="truncate text-xs hidden md:inline">
           {awayTeamName}
         </span>
-        <span className="truncate text-xs md:hidden">{awayTeamShortName}</span>
+        <span className="truncate hidden sm:inline md:hidden text-xs">
+          {awayTeamShortName}
+        </span>
+        <span className="text-xs sm:hidden">{awayTeamTla}</span>
       </div>
       <div
         className={`text-xs text-center text-white p-1 rounded ${
