@@ -62,9 +62,7 @@ const MatchCard = ({
         <span className="truncate text-xs">{awayTeamName}</span>
       </div>
       <div
-        className={`text-xs text-center text-white bg-${
-          status === "FINISHED" ? "red-500" : "blue-500"
-        }`}
+        className={`text-xs text-center text-white p-1 rounded ${status === "FINISHED" ? "bg-red-500" : "bg-blue-500"}`}
       >
         {status}
       </div>
