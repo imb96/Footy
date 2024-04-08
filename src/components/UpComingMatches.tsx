@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import getUpcomingMatch from "@/api/getUpcomingMatch";
 import MatchCard from "./MatchCard";
@@ -22,27 +24,26 @@ const UpComingMatches = () => {
 
   return (
     <div>
+      {"Upcoming Matches"}
       {data.length > 0 ? (
         <div>
-          <div>
-            {data.map((match) => (
-              <MatchCard
-                key={match.id}
-                date={match.utcDate}
-                status={match.status}
-                homeTeamName={match.homeTeam.name}
-                homeTeamShortName={match.homeTeam.shortName}
-                homeTeamTla={match.homeTeam.tla}
-                homeTeamCrest={match.homeTeam.crest}
-                homeTeamScore={match.score.fullTime.home}
-                awayTeamName={match.awayTeam.name}
-                awayTeamShortName={match.awayTeam.shortName}
-                awayTeamTla={match.awayTeam.tla}
-                awayTeamCrest={match.awayTeam.crest}
-                awayTeamScore={match.score.fullTime.away}
-              />
-            ))}
-          </div>
+          {data.map((match) => (
+            <MatchCard
+              key={match.id}
+              date={match.utcDate}
+              status={match.status}
+              homeTeamName={match.homeTeam.name}
+              homeTeamShortName={match.homeTeam.shortName}
+              homeTeamTla={match.homeTeam.tla}
+              homeTeamCrest={match.homeTeam.crest}
+              homeTeamScore={match.score.fullTime.home}
+              awayTeamName={match.awayTeam.name}
+              awayTeamShortName={match.awayTeam.shortName}
+              awayTeamTla={match.awayTeam.tla}
+              awayTeamCrest={match.awayTeam.crest}
+              awayTeamScore={match.score.fullTime.away}
+            />
+          ))}
         </div>
       ) : (
         <div>Loading...</div>
