@@ -15,7 +15,7 @@ const getPlayerRank = async ({ competition }: { competition: string }) => {
 
   const data = await res.json();
 
-  return data;
+  return data.scorers;
 };
 
 export default getPlayerRank;
