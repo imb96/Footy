@@ -4,14 +4,15 @@ import getPlayerRank from "@/api/getPlayerRank";
 import { useEffect, useState } from "react";
 import PlayerRankCard from "./PlayerRankCard";
 import { Scorer } from "@/types/Scorer";
+import Image from "next/image";
 const PlayerRank = () => {
   const [scorers, setScorers] = useState<Scorer[]>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const playerRank = await getPlayerRank({ competition: "PL" });
-        setScorers(playerRank);
+        const scorers = await getPlayerRank({ competition: "PL" });
+        setScorers(scorers);
       } catch (error) {
         console.error("Error fetching player rank data:", error);
       }
@@ -22,7 +23,15 @@ const PlayerRank = () => {
 
   return (
     <div>
-      {"EPL Player Rank"}
+      <div className="flex gap-1 items-end text-xl">
+        <Image
+          src={"https://crests.football-data.org/PL.png"}
+          alt={"league emblem"}
+          width={24}
+          height={24}
+        />
+        {"Premier League Player Rank"}
+      </div>
       {scorers ? (
         scorers.map((scorer, idx) => (
           <PlayerRankCard
