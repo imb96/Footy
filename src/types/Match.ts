@@ -23,5 +23,6 @@ export interface Match {
   competition: {
     code: "PL" | "CL";
     name: string;
+    emblem: string;
   };
 }
