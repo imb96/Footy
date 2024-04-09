@@ -22,8 +22,8 @@ const PlayerRank = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex gap-1 items-end text-xl">
+    <div className="w-[300px]">
+      <div className="flex gap-3 items-end text-lg">
         <Image
           src={"https://crests.football-data.org/PL.png"}
           alt={"league emblem"}

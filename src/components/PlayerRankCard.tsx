@@ -23,8 +23,8 @@ const PlayerRankCard = ({
 }: PlayerRankCardProps) => {
   return (
     <div key={playerId} className="flex items-center ">
-      <div className="text-xs truncate">{ranking}</div>
-      <div className="flex gap-1 w-[360px] p-1 items-center">
+      <div className="text-xs">{ranking}</div>
+      <div className="flex gap-1 p-1 items-center">
         <Image src={teamCrest} alt={teamName} width={20} height={20} />
         <span className="text-xs truncate">{playerName}</span>
         <span className="text-xs truncate">

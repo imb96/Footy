@@ -41,7 +41,7 @@ const MatchCard = ({
       <div className="p-1">
         <span className="text-xs truncate">{formatDate(date)}</span>
       </div>
-      <div className="flex gap-1 w-[180px] p-1 items-center">
+      <div className="flex gap-1 w-[80px] p-1 items-center md:w-[180px]">
         {homeTeamCrest ? (
           <Image
             src={homeTeamCrest}
@@ -65,7 +65,7 @@ const MatchCard = ({
           score: awayTeamScore,
         })}
       </div>
-      <div className="flex gap-1 w-[180px] p-1 items-center">
+      <div className="flex gap-1 w-[80px] p-1 items-center md:w-[180px]">
         {awayTeamCrest ? (
           <Image
             src={awayTeamCrest}
