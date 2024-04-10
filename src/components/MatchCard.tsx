@@ -38,8 +38,14 @@ const MatchCard = ({
 }: MatchCardProps) => {
   return (
     <div className="flex items-center justify-center">
-      <div className="p-1">
-        <span className="text-xs truncate">{formatDate(date)}</span>
+      <div className="p-1 w-[100px]">
+        {status === "FINISHED" ? (
+          <span className="text-xs bg-red-600 rounded px-1 text-white">
+            Finished
+          </span>
+        ) : (
+          <span className="text-xs truncate">{formatDate(date)}</span>
+        )}
       </div>
       <div className="flex gap-1 w-[80px] p-1 items-center md:w-[180px]">
         {homeTeamCrest ? (
@@ -81,13 +87,6 @@ const MatchCard = ({
           {awayTeamShortName}
         </span>
         <span className="text-xs sm:hidden">{awayTeamTla}</span>
-      </div>
-      <div
-        className={`text-xs text-center text-white p-1 rounded ${
-          status === "FINISHED" ? "bg-red-500" : "bg-blue-500"
-        }`}
-      >
-        {status}
       </div>
     </div>
   );
