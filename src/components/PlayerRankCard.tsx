@@ -1,14 +1,14 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 interface PlayerRankCardProps {
-  playerId: number;
-  ranking: number;
-  teamCrest: string;
-  teamName: string;
-  playerName: string;
-  playedMatches: string;
-  goals: string;
-  assists: string;
+  playerId: number
+  ranking: number
+  teamCrest: string
+  teamName: string
+  playerName: string
+  playedMatches: string
+  goals: string
+  assists: string
 }
 
 const PlayerRankCard = ({
@@ -38,7 +38,7 @@ const PlayerRankCard = ({
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PlayerRankCard;
+export default PlayerRankCard

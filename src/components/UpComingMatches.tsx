@@ -1,17 +1,18 @@
-import MatchCard from "./MatchCard";
-import useScheduleQuery from "@/hooks/api/useScheduleQuery";
+import Image from 'next/image'
 
-import { Match } from "@/types/Match";
-import Image from "next/image";
+import useScheduleQuery from '@/hooks/api/useScheduleQuery'
+import { Match } from '@/types/Match'
+
+import MatchCard from './MatchCard'
 
 const UpComingMatches = () => {
   const { data: clMatches } = useScheduleQuery({
-    competitions: "CL",
-  });
+    competitions: 'CL',
+  })
 
   const { data: plMatches } = useScheduleQuery({
-    competitions: "PL",
-  });
+    competitions: 'PL',
+  })
 
   return (
     <div>
@@ -20,11 +21,11 @@ const UpComingMatches = () => {
           <div className="flex gap-1 items-end text-xl">
             <Image
               src={plMatches[0].competition.emblem}
-              alt={"league emblem"}
+              alt={'league emblem'}
               width={24}
               height={24}
             />
-            {"Premier League"}
+            {'Premier League'}
           </div>
           {plMatches.map((match: Match) => (
             <MatchCard
@@ -50,11 +51,11 @@ const UpComingMatches = () => {
           <div className="flex gap-1 items-end text-xl">
             <Image
               src={clMatches[0].competition.emblem}
-              alt={"league emblem"}
+              alt={'league emblem'}
               width={24}
               height={24}
             />
-            {"Champions League"}
+            {'Champions League'}
           </div>
           {clMatches.map((match: Match) => (
             <MatchCard
@@ -76,7 +77,7 @@ const UpComingMatches = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default UpComingMatches;
+export default UpComingMatches

@@ -1,26 +1,27 @@
-import Image from "next/image";
-import formatDate from "@/utils/formatDate";
+import Image from 'next/image'
+
+import formatDate from '@/utils/formatDate'
 
 interface MatchCardProps {
-  date: string;
-  status: string;
-  homeTeamName: string;
-  homeTeamCrest: string;
-  homeTeamScore: string;
-  homeTeamShortName: string;
-  homeTeamTla: string;
-  awayTeamName: string;
-  awayTeamCrest: string;
-  awayTeamScore: string;
-  awayTeamShortName: string;
-  awayTeamTla: string;
+  date: string
+  status: string
+  homeTeamName: string
+  homeTeamCrest: string
+  homeTeamScore: string
+  homeTeamShortName: string
+  homeTeamTla: string
+  awayTeamName: string
+  awayTeamCrest: string
+  awayTeamScore: string
+  awayTeamShortName: string
+  awayTeamTla: string
 }
 
 const formatScore = ({ status, score }: { status: string; score: string }) => {
-  if (status === "TIMED") {
-    return "-";
-  } else return score;
-};
+  if (status === 'TIMED') {
+    return '-'
+  } else return score
+}
 
 const MatchCard = ({
   date,
@@ -39,7 +40,7 @@ const MatchCard = ({
   return (
     <div className="flex items-center justify-start">
       <div className="p-1 w-[100px]">
-        {status === "FINISHED" ? (
+        {status === 'FINISHED' ? (
           <span className="text-xs bg-red-600 rounded px-1 text-white">
             Finished
           </span>
@@ -68,9 +69,9 @@ const MatchCard = ({
         <span
           className={`
             ${
-              status === "FINISHED" &&
+              status === 'FINISHED' &&
               homeTeamScore > awayTeamScore &&
-              "text-red-500"
+              'text-red-500'
             }`}
         >
           {formatScore({ status, score: homeTeamScore })}
@@ -79,9 +80,9 @@ const MatchCard = ({
         <span
           className={`
             ${
-              status === "FINISHED" &&
+              status === 'FINISHED' &&
               awayTeamScore > homeTeamScore &&
-              "text-red-500"
+              'text-red-500'
             }`}
         >
           {formatScore({
@@ -108,7 +109,7 @@ const MatchCard = ({
         <span className="text-xs sm:hidden">{awayTeamTla}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MatchCard;
+export default MatchCard

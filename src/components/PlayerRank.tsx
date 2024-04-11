@@ -1,36 +1,40 @@
-"use client";
+'use client'
 
-import getPlayerRank from "@/api/getPlayerRank";
-import { useEffect, useState } from "react";
-import PlayerRankCard from "./PlayerRankCard";
-import { Scorer } from "@/types/Scorer";
-import Image from "next/image";
+import { useEffect, useState } from 'react'
+
+import Image from 'next/image'
+
+import getPlayerRank from '@/api/getPlayerRank'
+import { Scorer } from '@/types/Scorer'
+
+import PlayerRankCard from './PlayerRankCard'
+
 const PlayerRank = () => {
-  const [scorers, setScorers] = useState<Scorer[]>();
+  const [scorers, setScorers] = useState<Scorer[]>()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const scorers = await getPlayerRank({ competition: "PL" });
-        setScorers(scorers);
+        const scorers = await getPlayerRank({ competition: 'PL' })
+        setScorers(scorers)
       } catch (error) {
-        console.error("Error fetching player rank data:", error);
+        console.error('Error fetching player rank data:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div className="w-[300px]">
       <div className="flex gap-3 items-end text-lg">
         <Image
-          src={"https://crests.football-data.org/PL.png"}
-          alt={"league emblem"}
+          src={'https://crests.football-data.org/PL.png'}
+          alt={'league emblem'}
           width={24}
           height={24}
         />
-        {"Premier League Player Rank"}
+        {'Premier League Player Rank'}
       </div>
       {scorers ? (
         scorers.map((scorer, idx) => (
@@ -50,7 +54,7 @@ const PlayerRank = () => {
         <div>Loading...</div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PlayerRank;
+export default PlayerRank

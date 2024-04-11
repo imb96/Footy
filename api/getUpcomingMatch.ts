@@ -1,21 +1,21 @@
 const getUpcomingMatch = async () => {
-  const url = `api/matches`;
+  const url = `api/matches`
 
   const res = await fetch(url, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "X-Auth-Token": process.env.NEXT_PUBLIC_API_KEY || "",
+      'Content-Type': 'application/json',
+      'X-Auth-Token': process.env.NEXT_PUBLIC_API_KEY || '',
     },
-  });
+  })
 
   if (!res.ok) {
-    throw new Error("[getUpcomingMatch] api Failed to fetch data");
+    throw new Error('[getUpcomingMatch] api Failed to fetch data')
   }
 
-  const data = await res.json();
+  const data = await res.json()
 
-  return data.matches;
-};
+  return data.matches
+}
 
-export default getUpcomingMatch;
+export default getUpcomingMatch
