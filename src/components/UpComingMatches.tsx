@@ -1,30 +1,17 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import getSchedule from "@/api/getSchedule";
 import MatchCard from "./MatchCard";
+import useScheduleQuery from "@/hooks/api/useScheduleQuery";
 
 import { Match } from "@/types/Match";
 import Image from "next/image";
 
 const UpComingMatches = () => {
-  const [plMatches, setPLMatches] = useState<Match[]>([]);
-  const [clMatches, setCLMatches] = useState<Match[]>([]);
+  const { data: clMatches } = useScheduleQuery({
+    competitions: "CL",
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const upComingCLMatches = await getSchedule({ competitions: "CL" });
-        const upComingPLMatches = await getSchedule({ competitions: "PL" });
-        setCLMatches(upComingCLMatches);
-        setPLMatches(upComingPLMatches);
-      } catch (error) {
-        console.error("Error fetching upcoming match data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data: plMatches } = useScheduleQuery({
+    competitions: "PL",
+  });
 
   return (
     <div>
@@ -39,7 +26,7 @@ const UpComingMatches = () => {
             />
             {"Premier League"}
           </div>
-          {plMatches.map((match) => (
+          {plMatches.map((match: Match) => (
             <MatchCard
               key={match.id}
               date={match.utcDate}
@@ -69,7 +56,7 @@ const UpComingMatches = () => {
             />
             {"Champions League"}
           </div>
-          {clMatches.map((match) => (
+          {clMatches.map((match: Match) => (
             <MatchCard
               key={match.id}
               date={match.utcDate}
