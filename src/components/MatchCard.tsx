@@ -65,11 +65,30 @@ const MatchCard = ({
         <span className="text-xs sm:hidden">{homeTeamTla}</span>
       </div>
       <div className="px-5 w-[60px]">
-        {formatScore({ status, score: homeTeamScore })}:
-        {formatScore({
-          status,
-          score: awayTeamScore,
-        })}
+        <span
+          className={`
+            ${
+              status === "FINISHED" &&
+              homeTeamScore > awayTeamScore &&
+              "text-red-500"
+            }`}
+        >
+          {formatScore({ status, score: homeTeamScore })}
+        </span>
+        <span>:</span>
+        <span
+          className={`
+            ${
+              status === "FINISHED" &&
+              awayTeamScore > homeTeamScore &&
+              "text-red-500"
+            }`}
+        >
+          {formatScore({
+            status,
+            score: awayTeamScore,
+          })}
+        </span>
       </div>
       <div className="flex gap-1 w-[80px] p-1 items-center md:w-[180px]">
         {awayTeamCrest ? (
