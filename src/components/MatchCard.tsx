@@ -37,7 +37,7 @@ const MatchCard = ({
   awayTeamScore,
 }: MatchCardProps) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-start">
       <div className="p-1 w-[100px]">
         {status === "FINISHED" ? (
           <span className="text-xs bg-red-600 rounded px-1 text-white">
@@ -64,7 +64,7 @@ const MatchCard = ({
         </span>
         <span className="text-xs sm:hidden">{homeTeamTla}</span>
       </div>
-      <div className="px-5">
+      <div className="px-5 w-[60px]">
         {formatScore({ status, score: homeTeamScore })}:
         {formatScore({
           status,
