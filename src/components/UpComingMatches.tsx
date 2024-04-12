@@ -15,19 +15,19 @@ const UpComingMatches = () => {
   })
 
   return (
-    <div>
-      {plMatches.length > 0 && (
+    <div className="flex flex-col gap-10">
+      {clMatches.length > 0 && (
         <div>
           <div className="flex gap-1 items-end text-xl">
             <Image
-              src={plMatches[0].competition.emblem}
+              src={clMatches[0].competition.emblem}
               alt={'league emblem'}
               width={24}
               height={24}
             />
-            {'Premier League'}
+            {'Champions League'}
           </div>
-          {plMatches.map((match: Match) => (
+          {clMatches.map((match: Match) => (
             <MatchCard
               key={match.id}
               date={match.utcDate}
@@ -46,18 +46,18 @@ const UpComingMatches = () => {
           ))}
         </div>
       )}
-      {clMatches.length > 0 && (
+      {plMatches.length > 0 && (
         <div>
           <div className="flex gap-1 items-end text-xl">
             <Image
-              src={clMatches[0].competition.emblem}
+              src={plMatches[0].competition.emblem}
               alt={'league emblem'}
               width={24}
               height={24}
             />
-            {'Champions League'}
+            {'Premier League'}
           </div>
-          {clMatches.map((match: Match) => (
+          {plMatches.map((match: Match) => (
             <MatchCard
               key={match.id}
               date={match.utcDate}
