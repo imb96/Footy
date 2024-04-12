@@ -22,8 +22,8 @@ const UpComingMatches = () => {
             <Image
               src={clMatches[0].competition.emblem}
               alt={'league emblem'}
-              width={24}
-              height={24}
+              width={28}
+              height={28}
             />
             {'Champions League'}
           </div>
@@ -52,8 +52,8 @@ const UpComingMatches = () => {
             <Image
               src={plMatches[0].competition.emblem}
               alt={'league emblem'}
-              width={24}
-              height={24}
+              width={28}
+              height={28}
             />
             {'Premier League'}
           </div>
