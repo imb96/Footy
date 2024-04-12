@@ -1,18 +1,31 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 import Image from 'next/image'
 
-import useScheduleQuery from '@/hooks/api/useScheduleQuery'
+import getSchedule from '@/api/getSchedule'
 import { Match } from '@/types/Match'
 
 import MatchCard from './MatchCard'
 
 const UpComingMatches = () => {
-  const { data: clMatches } = useScheduleQuery({
-    competitions: 'CL',
-  })
+  const [clMatches, setCLMatches] = useState<Match[]>([])
+  const [plMatches, setPLMatches] = useState<Match[]>([])
 
-  const { data: plMatches } = useScheduleQuery({
-    competitions: 'PL',
-  })
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const upComingCLMatches = await getSchedule({ competitions: 'CL' })
+        const upComingPLMatches = await getSchedule({ competitions: 'PL' })
+        setCLMatches(upComingCLMatches)
+        setPLMatches(upComingPLMatches)
+      } catch (error) {
+        console.error('Error fetching upcoming match data:', error)
+      }
+    }
+    fetchData()
+  }, [])
 
   return (
     <div className="flex flex-col gap-10">
