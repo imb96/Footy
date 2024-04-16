@@ -19,9 +19,14 @@ const getSchedule = async ({ competitions }: { competitions: string }) => {
   const currentDate = new Date()
   const today = new Date(currentDate)
   const yesterday = new Date(currentDate)
+  const beforeYesterday = new Date(currentDate)
   const tomorrow = new Date(currentDate)
+  const afterTomorrow = new Date(currentDate)
+
   yesterday.setDate(currentDate.getDate() - 1)
+  beforeYesterday.setDate(currentDate.getDate() - 2)
   tomorrow.setDate(currentDate.getDate() + 1)
+  afterTomorrow.setDate(currentDate.getDate() + 2)
 
   const isSameDate = (date1: Date, date2: Date) => {
     return (
@@ -36,7 +41,9 @@ const getSchedule = async ({ competitions }: { competitions: string }) => {
     return (
       isSameDate(matchDate, yesterday) ||
       isSameDate(matchDate, today) ||
-      isSameDate(matchDate, tomorrow)
+      isSameDate(matchDate, tomorrow) ||
+      isSameDate(matchDate, beforeYesterday) ||
+      isSameDate(matchDate, afterTomorrow)
     )
   })
 
