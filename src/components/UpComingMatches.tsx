@@ -28,14 +28,16 @@ const UpComingMatches = ({ competitions }: { competitions: string }) => {
     <div className="flex flex-col gap-10">
       {matches.length > 0 && (
         <div>
-          <div className="flex gap-1 items-end text-xl">
+          <div className="flex justify-center gap-1 items-center p-5 truncate">
             <Image
               src={matches[0].competition.emblem}
               alt={'league emblem'}
-              width={28}
-              height={28}
+              width={40}
+              height={40}
             />
-            {matches[0].competition.name}
+            <h1 className="text-2xl font-bold">
+              {matches[0].competition.name}
+            </h1>
           </div>
           {matches.map((match: Match) => (
             <MatchCard
