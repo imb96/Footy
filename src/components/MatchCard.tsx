@@ -39,13 +39,15 @@ const MatchCard = ({
 }: MatchCardProps) => {
   return (
     <div className="flex items-center justify-start">
-      <div className="p-1 w-[100px]">
+      <div className="p-1 w-[120px]">
         {status === 'FINISHED' ? (
-          <span className="text-xs bg-red-600 rounded px-1 text-white">
+          <span className="text-xs bg-red-600 rounded px-2 py-1 text-white">
             Finished
           </span>
         ) : (
-          <span className="text-xs truncate">{formatDate(date)}</span>
+          <span className="text-xs bg-blue-600 rounded px-2 py-1 truncate text-white">
+            {formatDate(date)}
+          </span>
         )}
       </div>
       <div className="flex gap-1 w-[80px] p-1 items-center md:w-[180px]">
