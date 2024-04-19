@@ -24,7 +24,7 @@ const HeaderItem = ({ imageSrc, title, isActive, link }: HeaderItemProps) => {
       onClick={handleClickHeaderItem}
     >
       {imageSrc ? (
-        <Image src={imageSrc} alt={'image'} width={48} height={48} />
+        <Image src={imageSrc} alt={'image'} width={48} height={48} priority />
       ) : (
         <span>{title}</span>
       )}
