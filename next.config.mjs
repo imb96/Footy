@@ -21,7 +21,7 @@ const nextConfig = {
     return [
       {
         // matching all API routes
-        source: 'https://api.football-data.org/v4/competitions/:path*',
+        source: 'https://api.football-data.org/v4/:path*',
         headers: [
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           { key: 'Access-Control-Allow-Origin', value: '*' }, // replace this your actual origin
