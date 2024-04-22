@@ -5,24 +5,13 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import getSchedule from '@/api/getSchedule'
+import useScheduleQuery from '@/hooks/api/useScheduleQuery'
 import { Match } from '@/types/Match'
 
 import MatchCard from './MatchCard'
 
 const UpComingMatches = ({ competitions }: { competitions: string }) => {
-  const [matches, setMatches] = useState<Match[]>([])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const upComingPLMatches = await getSchedule({ competitions })
-        setMatches(upComingPLMatches)
-      } catch (error) {
-        console.error('Error fetching upcoming match data:', error)
-      }
-    }
-    fetchData()
-  }, [competitions])
+  const { data: matches } = useScheduleQuery({ competitions })
 
   return (
     <div className="flex flex-col gap-10">

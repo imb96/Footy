@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import Header from '@/components/Header'
+import ReactQueryProviders from '@/hooks/api/useReactQuery'
 
 import './globals.css'
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <main className="flex min-h-screen flex-col items-center gap-5 p-5">
-          <div>{children}</div>
+          <ReactQueryProviders>{children}</ReactQueryProviders>
         </main>
       </body>
     </html>

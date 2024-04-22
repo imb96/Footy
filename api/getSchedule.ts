@@ -1,7 +1,7 @@
 import { Match } from '@/types/Match'
 
 const getSchedule = async ({ competitions }: { competitions: string }) => {
-  const url = `api/competitions/${competitions}/matches`
+  const url = `http://localhost:3000/api/competitions/${competitions}/matches`
 
   const res = await fetch(url, {
     method: 'GET',
