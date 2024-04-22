@@ -5,9 +5,7 @@ import getSchedule from '@/api/getSchedule'
 const useScheduleQuery = ({ competitions }: { competitions: string }) => {
   return useSuspenseQuery({
     queryKey: ['schedule', competitions],
-    queryFn: async () => await getSchedule({ competitions }),
-    gcTime: 24 * 60 * 60 * 60 * 1000,
-    staleTime: Infinity,
+    queryFn: () => getSchedule({ competitions }),
   })
 }
 
