@@ -34,7 +34,13 @@ const TeamRank = ({ competition }: { competition: string }) => {
             width={24}
             height={24}
           />
-          <div className="text-sm">{team.team.name}</div>
+          <div className="truncate text-xs hidden md:inline">
+            {team.team.name}
+          </div>
+          <div className="truncate hidden sm:inline md:hidden text-xs">
+            {team.team.shortName}
+          </div>
+          <div className="text-xs sm:hidden">{team.team.tla}</div>
           <div className="text-sm">{team.playedGames}</div>
           <div className="text-sm">{team.won}</div>
           <div className="text-sm">{team.draw}</div>

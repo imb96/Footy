@@ -10,6 +10,8 @@ export interface Team {
   goalDifference: number
   team: {
     name: string
+    shortName: string
+    tla: string
     crest: string
   }
 }
