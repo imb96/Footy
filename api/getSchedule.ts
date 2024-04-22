@@ -1,10 +1,12 @@
 import { Match } from '@/types/Match'
 
 const getSchedule = async ({ competitions }: { competitions: string }) => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? `http://localhost:3000/api/competitions/${competitions}/matches`
-      : `https://api.football-data.org/v4/competitions/${competitions}/matches`
+  // const url =
+  //   process.env.NODE_ENV === 'development'
+  //     ? `http://localhost:3000/api/competitions/${competitions}/matches`
+  //     : `https://api.football-data.org/v4/competitions/${competitions}/matches`
+
+  const url = `api/competitions/${competitions}/matches`
 
   const res = await fetch(url, {
     method: 'GET',

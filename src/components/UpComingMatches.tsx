@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
+import { UseQueryResult } from '@tanstack/react-query'
 import Image from 'next/image'
 
 import getSchedule from '@/api/getSchedule'
@@ -11,7 +12,23 @@ import { Match } from '@/types/Match'
 import MatchCard from './MatchCard'
 
 const UpComingMatches = ({ competitions }: { competitions: string }) => {
-  const { data: matches } = useScheduleQuery({ competitions })
+  const {
+    data: matches,
+    isLoading,
+    isError,
+  } = useScheduleQuery({ competitions })
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return <div>{'Error'}</div>
+  }
 
   return (
     <div className="flex flex-col gap-10">
