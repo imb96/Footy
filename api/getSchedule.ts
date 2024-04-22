@@ -4,7 +4,7 @@ const getSchedule = async ({ competitions }: { competitions: string }) => {
   const url =
     process.env.NODE_ENV === 'development'
       ? `http://localhost:3000/api/competitions/${competitions}/matches`
-      : `/api/competitions/${competitions}/matches`
+      : `https://api.football-data.org/v4/api/competitions/${competitions}/matches`
 
   const res = await fetch(url, {
     method: 'GET',
