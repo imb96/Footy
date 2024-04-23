@@ -1,26 +1,24 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import Image from 'next/image'
 
-import getTeamRank from '@/api/getTeamRank'
+import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
 import { Team } from '@/types/Team'
 
 const TeamRank = ({ competition }: { competition: string }) => {
-  const [teams, setTeams] = useState([])
+  const { data: teams, isLoading, isError } = useTeamRankQuery({ competition })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const teams = await getTeamRank({ competition })
-        setTeams(teams)
-      } catch (error) {
-        console.error('Error fetching team rank data:', error)
-      }
-    }
-    fetchData()
-  }, [competition])
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
+
+  if (isError) {
+    return <div>{'Error'}</div>
+  }
 
   return (
     <div className="flex flex-col gap-2">
