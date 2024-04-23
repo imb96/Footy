@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import Image from 'next/image'
 
 import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
@@ -7,6 +9,7 @@ import { Team } from '@/types/Team'
 
 const TeamRank = ({ competition }: { competition: string }) => {
   const { data: teams, isLoading, isError } = useTeamRankQuery({ competition })
+  const [visibleTeams, setVisibleTeams] = useState(10)
 
   if (isLoading) {
     return (
@@ -18,6 +21,10 @@ const TeamRank = ({ competition }: { competition: string }) => {
 
   if (isError) {
     return <div>{'Error'}</div>
+  }
+
+  const handleShowMoreTeams = () => {
+    setVisibleTeams((prevVisibleTeams) => prevVisibleTeams + 10)
   }
 
   return (
@@ -45,7 +52,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
         <div className="text-sm w-5">득실</div>
         <div className="text-sm w-5">승점</div>
       </div>
-      {teams.map((team: Team) => (
+      {teams.slice(0, visibleTeams).map((team: Team) => (
         <div
           key={team.position}
           className="flex gap-2 items-center text-center"
@@ -76,6 +83,15 @@ const TeamRank = ({ competition }: { competition: string }) => {
           <div className="text-sm font-bold">{team.points}</div>
         </div>
       ))}
+
+      {visibleTeams < teams.length && (
+        <button
+          className="bg-rose-500 text-white py-2 px-4 rounded-md"
+          onClick={handleShowMoreTeams}
+        >
+          {'더보기'}
+        </button>
+      )}
     </div>
   )
 }
