@@ -30,7 +30,7 @@ const UpComingMatches = ({ competition }: { competition: string }) => {
     <div className="flex flex-col gap-10">
       {matches.length > 0 && (
         <div>
-          <div className="flex justify-center gap-1 items-center p-5 truncate">
+          <div className="flex justify-center gap-2 items-center p-5 truncate">
             <Image
               src={matches[0].competition.emblem}
               alt={'league emblem'}

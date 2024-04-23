@@ -29,15 +29,15 @@ const TeamRank = ({ competition }: { competition: string }) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-1 items-center">
-        <div className="flex justify-center gap-1 items-center p-5 truncate">
+      <div className="flex gap-1 items-center justify-center">
+        <div className="flex justify-center gap-2 items-center p-5 truncate">
           <Image
             src={'/images/PL.png'}
             alt={'league emblem'}
             width={40}
             height={40}
           />
-          <h1 className="text-2xl font-bold">{'Premier League Team Rank'}</h1>
+          <h1 className="text-2xl font-bold">{'Team Rank'}</h1>
         </div>
       </div>
       <div className="flex gap-2 items-center text-center font-bold">
