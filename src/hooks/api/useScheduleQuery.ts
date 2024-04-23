@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query'
 
 import getSchedule from '@/api/getSchedule'
 
-const useScheduleQuery = ({ competitions }: { competitions: string }) => {
+const useScheduleQuery = ({ competition }: { competition: string }) => {
   return useQuery({
-    queryKey: ['schedule', competitions],
-    queryFn: () => getSchedule({ competitions }),
+    queryKey: ['schedule', competition],
+    queryFn: () => getSchedule({ competition }),
   })
 }
 

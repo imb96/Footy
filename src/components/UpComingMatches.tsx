@@ -1,22 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
-import { UseQueryResult } from '@tanstack/react-query'
 import Image from 'next/image'
 
-import getSchedule from '@/api/getSchedule'
 import useScheduleQuery from '@/hooks/api/useScheduleQuery'
 import { Match } from '@/types/Match'
 
 import MatchCard from './MatchCard'
 
-const UpComingMatches = ({ competitions }: { competitions: string }) => {
+const UpComingMatches = ({ competition }: { competition: string }) => {
   const {
     data: matches,
     isLoading,
     isError,
-  } = useScheduleQuery({ competitions })
+  } = useScheduleQuery({ competition })
 
   if (isLoading) {
     return (

@@ -37,7 +37,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
       </div>
       <div className="flex gap-2 items-center text-center font-bold">
         <div className="text-sm w-4"></div>
-        <div className="text-sm md:w-44 sm:w-40 w-28">클럽</div>
+        <div className="text-sm md:w-44 sm:w-40 w-[72px]">클럽</div>
         <div className="text-sm w-5">경기</div>
         <div className="text-sm w-5">승</div>
         <div className="text-sm w-5">무</div>
@@ -62,10 +62,12 @@ const TeamRank = ({ competition }: { competition: string }) => {
           <div className="truncate text-xs hidden md:inline w-36 text-start">
             {team.team.name}
           </div>
-          <div className="truncate hidden sm:inline md:hidden text-xs w-32">
+          <div className="truncate hidden sm:inline md:hidden text-xs w-32 text-start">
             {team.team.shortName}
           </div>
-          <div className="text-xs sm:hidden w-20">{team.team.tla}</div>
+          <div className="text-xs sm:hidden w-10 text-start">
+            {team.team.tla}
+          </div>
           <div className="text-sm w-5">{team.playedGames}</div>
           <div className="text-sm w-5">{team.won}</div>
           <div className="text-sm w-5">{team.draw}</div>
