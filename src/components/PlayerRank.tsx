@@ -1,43 +1,53 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import Image from 'next/image'
 
-import getPlayerRank from '@/api/getPlayerRank'
+import usePlayerRankQuery from '@/hooks/api/usePlayerRankQuery'
 import { Scorer } from '@/types/Scorer'
 
 import PlayerRankCard from './PlayerRankCard'
 
 const PlayerRank = () => {
-  const [scorers, setScorers] = useState<Scorer[]>()
+  const {
+    data: scorers,
+    isLoading,
+    isError,
+  } = usePlayerRankQuery({ competition: 'PL' })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const scorers = await getPlayerRank({ competition: 'PL' })
-        setScorers(scorers)
-      } catch (error) {
-        console.error('Error fetching player rank data:', error)
-      }
-    }
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <div className="loader"></div>
+      </div>
+    )
+  }
 
-    fetchData()
-  }, [])
+  if (isError) {
+    return <div>{'Error'}</div>
+  }
 
   return (
-    <div className="w-[300px]">
-      <div className="flex gap-3 items-end text-lg">
-        <Image
-          src={'https://crests.football-data.org/PL.png'}
-          alt={'league emblem'}
-          width={24}
-          height={24}
-        />
-        {'Premier League Player Rank'}
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-1 justify-center items-center">
+        <div className="flex justify-center gap-2 p-5 truncate items-center">
+          <Image
+            src={'/images/PL.png'}
+            alt={'league emblem'}
+            width={40}
+            height={40}
+          />
+          <h1 className="text-2xl font-bold">{'Player Rank'}</h1>
+        </div>
+      </div>
+      <div className="flex gap-2 items-center text-center font-bold">
+        <div className="text-sm w-4"></div>
+        <div className="text-sm w-40">선수</div>
+        <div className="text-sm w-10">경기</div>
+        <div className="text-sm w-10">골</div>
+        <div className="text-sm w-10">도움</div>
       </div>
       {scorers ? (
-        scorers.map((scorer, idx) => (
+        scorers.map((scorer: Scorer, idx: number) => (
           <PlayerRankCard
             key={scorer.player.id}
             playerId={scorer.player.id}
