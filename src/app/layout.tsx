@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
+import ReactQueryProviders from '@/app/contexts/TanstackQueryContext'
 import Header from '@/components/Header'
-import ReactQueryProviders from '@/hooks/api/useReactQuery'
 
 import './globals.css'
 
