@@ -6,12 +6,12 @@ import { useRouter } from 'next/navigation'
 interface HeaderItemProps {
   imageSrc?: string
   title?: string
-  isActive?: boolean
   link?: string
 }
 
-const HeaderItem = ({ imageSrc, title, isActive, link }: HeaderItemProps) => {
+const HeaderItem = ({ imageSrc, title, link }: HeaderItemProps) => {
   const router = useRouter()
+  const isActive = window.location.pathname === link
 
   const handleClickHeaderItem = () => {
     if (!link) return
@@ -20,7 +20,7 @@ const HeaderItem = ({ imageSrc, title, isActive, link }: HeaderItemProps) => {
 
   return (
     <div
-      className={`cursor-pointer border-b-2 border-transparent hover:border-white ${isActive && 'border-white'}`}
+      className={`cursor-pointer border-b-2 border-transparent hover:border-white ${isActive ? 'border-white' : ''}`}
       onClick={handleClickHeaderItem}
     >
       {imageSrc ? (
