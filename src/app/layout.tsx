@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Footy',
-  description: 'Football Schedule Tracker',
+  description:
+    'Follow your favorite football matches and track live scores with Footy, the football schedule tracker app',
 }
 
 export default function RootLayout({
