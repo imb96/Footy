@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
@@ -10,8 +12,12 @@ interface HeaderItemProps {
 }
 
 const HeaderItem = ({ imageSrc, title, link }: HeaderItemProps) => {
+  const [isActive, setIsActive] = useState(false)
   const router = useRouter()
-  const isActive = window.location.pathname === link
+
+  useEffect(() => {
+    setIsActive(window.location.pathname === link)
+  }, [link])
 
   const handleClickHeaderItem = () => {
     if (!link) return
