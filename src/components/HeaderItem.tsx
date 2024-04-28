@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 interface HeaderItemProps {
   imageSrc?: string
@@ -14,10 +14,11 @@ interface HeaderItemProps {
 const HeaderItem = ({ imageSrc, title, link }: HeaderItemProps) => {
   const [isActive, setIsActive] = useState(false)
   const router = useRouter()
+  const pathName = usePathname()
 
   useEffect(() => {
-    setIsActive(window.location.pathname === link)
-  }, [link])
+    setIsActive(pathName === link)
+  }, [pathName, link])
 
   const handleClickHeaderItem = () => {
     if (!link) return
