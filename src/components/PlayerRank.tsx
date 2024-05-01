@@ -7,12 +7,12 @@ import { Scorer } from '@/types/Scorer'
 
 import PlayerRankCard from './PlayerRankCard'
 
-const PlayerRank = () => {
+const PlayerRank = ({ competition }: { competition: string }) => {
   const {
     data: scorers,
     isLoading,
     isError,
-  } = usePlayerRankQuery({ competition: 'PL' })
+  } = usePlayerRankQuery({ competition })
 
   if (isLoading) {
     return (
@@ -31,7 +31,7 @@ const PlayerRank = () => {
       <div className="flex gap-1 justify-center items-center">
         <div className="flex justify-center gap-2 p-5 truncate items-center">
           <Image
-            src={'/images/PL.png'}
+            src={`/images/${competition}.png`}
             alt={'league emblem'}
             width={40}
             height={40}
