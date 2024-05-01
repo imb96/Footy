@@ -34,7 +34,7 @@ const PlayerRankCard = ({
           <div>{goals}</div>
         </div>
         <div className="text-sm w-11 truncate">
-          <div>{assists}</div>
+          <div>{assists || 0}</div>
         </div>
       </div>
     </div>
