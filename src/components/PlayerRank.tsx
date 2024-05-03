@@ -8,11 +8,7 @@ import { Scorer } from '@/types/Scorer'
 import PlayerRankCard from './PlayerRankCard'
 
 const PlayerRank = ({ competition }: { competition: string }) => {
-  const {
-    data: scorers,
-    isLoading,
-    isError,
-  } = usePlayerRankQuery({ competition })
+  const { data, isLoading, isError } = usePlayerRankQuery({ competition })
 
   if (isLoading) {
     return (
@@ -36,7 +32,7 @@ const PlayerRank = ({ competition }: { competition: string }) => {
             width={40}
             height={40}
           />
-          <h1 className="text-2xl font-bold">{'Player Rank'}</h1>
+          <h1 className="text-2xl font-bold">{`Player Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
         </div>
       </div>
       <div className="flex gap-2 items-center text-center font-bold">
@@ -46,8 +42,8 @@ const PlayerRank = ({ competition }: { competition: string }) => {
         <div className="text-sm w-10">골</div>
         <div className="text-sm w-10">도움</div>
       </div>
-      {scorers ? (
-        scorers.map((scorer: Scorer, idx: number) => (
+      {data?.scorers ? (
+        data.scorers.map((scorer: Scorer, idx: number) => (
           <PlayerRankCard
             key={scorer.player.id}
             playerId={scorer.player.id}
