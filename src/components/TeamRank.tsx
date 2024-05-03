@@ -8,7 +8,7 @@ import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
 import { Team } from '@/types/Team'
 
 const TeamRank = ({ competition }: { competition: string }) => {
-  const { data: teams, isLoading, isError } = useTeamRankQuery({ competition })
+  const { data, isLoading, isError } = useTeamRankQuery({ competition })
   const [visibleTeams, setVisibleTeams] = useState(10)
 
   if (isLoading) {
@@ -37,7 +37,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
             width={40}
             height={40}
           />
-          <h1 className="text-2xl font-bold">{'Team Rank'}</h1>
+          <h1 className="text-2xl font-bold">{`Team Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
         </div>
       </div>
       <div className="flex gap-2 items-center text-center font-bold">
@@ -52,7 +52,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
         <div className="text-sm w-5">득실</div>
         <div className="text-sm w-5">승점</div>
       </div>
-      {teams.slice(0, visibleTeams).map((team: Team) => (
+      {data?.table.slice(0, visibleTeams).map((team: Team) => (
         <div
           key={team.position}
           className="flex gap-2 items-center text-center"
@@ -84,7 +84,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
         </div>
       ))}
 
-      {visibleTeams < teams.length && (
+      {visibleTeams < data?.table.length && (
         <button
           className="bg-rose-500 text-white py-2 px-4 rounded-md"
           onClick={handleShowMoreTeams}
