@@ -15,7 +15,7 @@ const getTeamRank = async ({ competition }: { competition: string }) => {
 
   const data = await res.json()
 
-  return data.standings[0].table
+  return { table: data.standings[0].table, season: data.filters.season }
 }
 
 export default getTeamRank
