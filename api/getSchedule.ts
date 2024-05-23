@@ -1,5 +1,11 @@
 import { Match } from '@/types/Match'
 
+const adjustDate = (date: Date, days: number): Date => {
+  const newDate = new Date(date)
+  newDate.setDate(date.getDate() + days)
+  return newDate
+}
+
 const getSchedule = async ({ competition }: { competition: string }) => {
   const url = `api/competitions/${competition}/matches`
 
@@ -17,35 +23,26 @@ const getSchedule = async ({ competition }: { competition: string }) => {
 
   const data = await res.json()
   const currentDate = new Date()
-  const today = new Date(currentDate)
-  const yesterday = new Date(currentDate)
-  const beforeYesterday = new Date(currentDate)
-  const tomorrow = new Date(currentDate)
-  const afterTomorrow = new Date(currentDate)
+  const daysBefore = -3
+  const daysAfter = 3
 
-  yesterday.setDate(currentDate.getDate() - 1)
-  beforeYesterday.setDate(currentDate.getDate() - 2)
-  tomorrow.setDate(currentDate.getDate() + 1)
-  afterTomorrow.setDate(currentDate.getDate() + 2)
-
-  const isSameDate = (date1: Date, date2: Date) => {
-    return (
-      date1.getFullYear() === date2.getFullYear() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate()
-    )
-  }
+  const startDate = adjustDate(currentDate, daysBefore)
+  const endDate = adjustDate(currentDate, daysAfter)
 
   const filteredMatches = data.matches.filter((match: Match) => {
     const matchDate = new Date(match.utcDate)
-    return (
-      isSameDate(matchDate, yesterday) ||
-      isSameDate(matchDate, today) ||
-      isSameDate(matchDate, tomorrow) ||
-      isSameDate(matchDate, beforeYesterday) ||
-      isSameDate(matchDate, afterTomorrow)
-    )
+    return matchDate >= startDate && matchDate <= endDate
   })
+
+  if (filteredMatches.length === 0) {
+    return data.matches.filter((match: Match) => {
+      const matchDate = new Date(match.utcDate)
+      return (
+        matchDate >= adjustDate(currentDate, daysBefore - 7) &&
+        matchDate <= adjustDate(currentDate, daysAfter + 7)
+      )
+    })
+  }
 
   return filteredMatches
 }
