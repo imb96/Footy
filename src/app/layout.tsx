@@ -10,7 +10,36 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Footy',
+  title: 'Footy-schedule',
+  generator: 'Next.js',
+  applicationName: 'Footy-schedule',
+  referrer: 'origin-when-cross-origin',
+  keywords: [
+    'football',
+    'soccer',
+    'soccer-scores',
+    'football-scores',
+    '축구',
+    '손흥민',
+    'epl',
+    'pl',
+    '챔스 일정',
+    '챔스',
+    '챔스 결승',
+    'cl',
+    'son',
+    'sonny',
+  ],
+  openGraph: {
+    title: 'Footy-schedule',
+    description:
+      'Follow your favorite football matches and track live scores with Footy, the football schedule tracker app',
+    url: 'https://footy-schedule.vercel.app/',
+    siteName: 'Footy',
+    images: [{ url: '/images/son.png', width: 256, height: 256, alt: 'son' }],
+    locale: 'ko_KR',
+    type: 'website',
+  },
   description:
     'Follow your favorite football matches and track live scores with Footy, the football schedule tracker app',
 }
