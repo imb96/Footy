@@ -63,10 +63,10 @@ const UpComingMatches = ({ competition }: { competition: string }) => {
           ))}
         </div>
       ) : (
-        <div>
+        <div className="flex justify-center">
           <div>{`No upcoming ${competition} matches...`}</div>
           <div
-            className="cursor-pointer"
+            className="cursor-pointer hover:underline"
             onClick={() => router.push(`/${competition.toLowerCase()}`)}
           >{` -> Go to ${competition} Ranking`}</div>
         </div>
