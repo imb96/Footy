@@ -55,7 +55,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
       {data?.table.slice(0, visibleTeams).map((team: Team) => (
         <div
           key={team.position}
-          className="flex gap-2 items-center text-center"
+          className={`flex p-1 gap-2 items-center text-center ${team.position > 0 && team.position < 5 && "bg-blue-300"} ${team.position > 17 && "bg-gray-300"} ${team.position === 5 && "bg-green-300"}`}
         >
           <div className="text-sm w-4">{team.position}</div>
           <Image
