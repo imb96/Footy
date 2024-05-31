@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import mainImage from '../../public/images/son.png'
 
 import UpComingMatches from '@/components/UpComingMatches'
 
@@ -7,11 +8,12 @@ export default function Home() {
     <main className="flex min-h-screen flex-col gap-5">
       <div className="flex justify-center">
         <Image
-          src="/images/son.png"
+          src={mainImage}
           alt="son"
           width={200}
           height={200}
           className="select-none"
+          loading="eager"
         />
       </div>
       <UpComingMatches competition={'PL'} />
