@@ -1,15 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import Image from 'next/image'
 
 import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
 import { Team } from '@/types/Team'
+import Button from '@/components/Button'
 
 const TeamRank = ({ competition }: { competition: string }) => {
   const { data, isLoading, isError } = useTeamRankQuery({ competition })
   const [visibleTeams, setVisibleTeams] = useState(10)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   if (isLoading) {
     return (
@@ -27,6 +29,10 @@ const TeamRank = ({ competition }: { competition: string }) => {
     setVisibleTeams((prevVisibleTeams) => prevVisibleTeams + 10)
   }
 
+  const handleShowLessTeams = () => {
+    setVisibleTeams((prevVisibleTeams) => prevVisibleTeams - 10)
+  }
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-1 items-center justify-center">
@@ -37,7 +43,8 @@ const TeamRank = ({ competition }: { competition: string }) => {
             width={40}
             height={40}
           />
-          <h1 className="text-2xl font-bold">{`Team Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
+          <h1
+            className="text-2xl font-bold">{`Team Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
         </div>
       </div>
       <div className="flex gap-2 items-center text-center font-bold">
@@ -55,7 +62,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
       {data?.table.slice(0, visibleTeams).map((team: Team) => (
         <div
           key={team.position}
-          className={`flex p-1 gap-2 items-center text-center ${team.position > 0 && team.position < 5 && "bg-blue-300"} ${team.position > 17 && "bg-gray-300"} ${team.position === 5 && "bg-green-300"}`}
+          className={`flex p-1 gap-2 items-center text-center ${team.position > 0 && team.position < 5 && 'bg-blue-300'} ${team.position > 17 && 'bg-gray-300'} ${team.position === 5 && 'bg-green-300'}`}
         >
           <div className="text-sm w-4">{team.position}</div>
           <Image
@@ -84,13 +91,22 @@ const TeamRank = ({ competition }: { competition: string }) => {
         </div>
       ))}
 
-      {visibleTeams < data?.table.length && (
-        <button
+      {visibleTeams < data?.table.length ? (
+        <Button
+          ref={buttonRef}
           className="bg-rose-500 text-white py-2 px-4 rounded-md"
           onClick={handleShowMoreTeams}
         >
           {'더보기'}
-        </button>
+        </Button>
+      ) : (
+        <Button
+          ref={buttonRef}
+          className="bg-rose-500 text-white py-2 px-4 rounded-md"
+          onClick={handleShowLessTeams}
+        >
+          {'간략히'}
+        </Button>
       )}
     </div>
   )
