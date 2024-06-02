@@ -1,17 +1,17 @@
 export interface Team {
-  position: number
-  playedGames: number
-  won: number
-  draw: number
-  lost: number
-  points: number
-  goalsFor: number
-  goalsAgainst: number
-  goalDifference: number
+  position: number;
+  playedGames: number;
+  won: number;
+  draw: number;
+  lost: number;
+  points: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
   team: {
-    name: string
-    shortName: string
-    tla: string
-    crest: string
-  }
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
 }

@@ -1,30 +1,30 @@
 export interface Match {
-  id: number
-  utcDate: string
-  status: string
+  id: number;
+  utcDate: string;
+  status: string;
   homeTeam: {
-    name: string
-    shortName: string
-    tla: string
-    crest: string
-  }
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
   awayTeam: {
-    name: string
-    shortName: string
-    tla: string
-    crest: string
-  }
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
   score: {
     fullTime: {
-      home: string
-      away: string
-    }
-  }
+      home: string;
+      away: string;
+    };
+  };
   competition: {
-    code: Competition
-    name: string
-    emblem: string
-  }
+    code: Competition;
+    name: string;
+    emblem: string;
+  };
 }
 
-export type Competition = 'PL' | 'CL'
+export type Competition = 'PL' | 'CL';

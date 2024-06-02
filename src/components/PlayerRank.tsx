@@ -1,38 +1,33 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
+import Image from 'next/image';
 
-import usePlayerRankQuery from '@/hooks/api/usePlayerRankQuery'
-import type { Competition } from '@/types/match.types'
-import type { Scorer } from '@/types/scorer.types'
+import usePlayerRankQuery from '@/hooks/api/usePlayerRankQuery';
+import type { Competition } from '@/types/match.types';
+import type { Scorer } from '@/types/scorer.types';
 
-import PlayerRankCard from './PlayerRankCard'
+import PlayerRankCard from './PlayerRankCard';
 
 const PlayerRank = ({ competition }: { competition: Competition }) => {
-  const { data, isLoading, isError } = usePlayerRankQuery({ competition })
+  const { data, isLoading, isError } = usePlayerRankQuery({ competition });
 
   if (isLoading) {
     return (
       <div className="flex justify-center">
         <div className="loader"></div>
       </div>
-    )
+    );
   }
 
   if (isError) {
-    return <div>{'Error'}</div>
+    return <div>{'Error'}</div>;
   }
 
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-1 justify-center items-center">
         <div className="flex justify-center gap-2 p-5 truncate items-center">
-          <Image
-            src={`/images/${competition}.png`}
-            alt={'league emblem'}
-            width={40}
-            height={40}
-          />
+          <Image src={`/images/${competition}.png`} alt={'league emblem'} width={40} height={40} />
           <h1 className="text-2xl font-bold">{`Player Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
         </div>
       </div>
@@ -61,7 +56,7 @@ const PlayerRank = ({ competition }: { competition: Competition }) => {
         <div>Loading...</div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default PlayerRank
+export default PlayerRank;

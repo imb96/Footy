@@ -1,5 +1,5 @@
-import HeaderItem from './HeaderItem'
-import Logo from './Logo'
+import HeaderItem from './HeaderItem';
+import Logo from './Logo';
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         <HeaderItem imageSrc="/images/CL.png" link="/cl" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

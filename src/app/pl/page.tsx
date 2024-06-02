@@ -1,5 +1,5 @@
-import PlayerRank from '@/components/PlayerRank'
-import TeamRank from '@/components/TeamRank'
+import PlayerRank from '@/components/PlayerRank';
+import TeamRank from '@/components/TeamRank';
 
 export default function PlPage() {
   return (
@@ -7,5 +7,5 @@ export default function PlPage() {
       <TeamRank competition="PL" />
       <PlayerRank competition="PL" />
     </main>
-  )
+  );
 }

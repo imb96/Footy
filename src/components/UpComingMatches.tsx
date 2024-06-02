@@ -1,32 +1,28 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
-import useScheduleQuery from '@/hooks/api/useScheduleQuery'
-import type { Competition, Match } from '@/types/match.types'
+import useScheduleQuery from '@/hooks/api/useScheduleQuery';
+import type { Competition, Match } from '@/types/match.types';
 
-import MatchCard from './MatchCard'
+import MatchCard from './MatchCard';
 
 const UpComingMatches = ({ competition }: { competition: Competition }) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  const {
-    data: matches,
-    isLoading,
-    isError,
-  } = useScheduleQuery({ competition })
+  const { data: matches, isLoading, isError } = useScheduleQuery({ competition });
 
   if (isLoading) {
     return (
       <div className="flex justify-center">
         <div className="loader"></div>
       </div>
-    )
+    );
   }
 
   if (isError) {
-    return <div>{'Error'}</div>
+    return <div>{'Error'}</div>;
   }
 
   return (
@@ -34,15 +30,8 @@ const UpComingMatches = ({ competition }: { competition: Competition }) => {
       {matches.length > 0 ? (
         <div>
           <div className="flex justify-center gap-2 items-center p-5 truncate">
-            <Image
-              src={matches[0].competition.emblem}
-              alt={'league emblem'}
-              width={40}
-              height={40}
-            />
-            <h1 className="text-2xl font-bold">
-              {matches[0].competition.name}
-            </h1>
+            <Image src={matches[0].competition.emblem} alt={'league emblem'} width={40} height={40} />
+            <h1 className="text-2xl font-bold">{matches[0].competition.name}</h1>
           </div>
           {matches.map((match: Match) => (
             <MatchCard
@@ -72,7 +61,7 @@ const UpComingMatches = ({ competition }: { competition: Competition }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default UpComingMatches
+export default UpComingMatches;
