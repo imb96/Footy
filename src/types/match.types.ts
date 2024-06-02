@@ -21,7 +21,7 @@ export interface Match {
     }
   }
   competition: {
-    code: 'PL' | 'CL'
+    code: Competition
     name: string
     emblem: string
   }
