@@ -1,4 +1,5 @@
-import { Match } from '@/types/Match'
+import type { Match } from '@/types/match.types'
+import type { Competition } from '@/types/match.types'
 
 const adjustDate = (date: Date, days: number): Date => {
   const newDate = new Date(date)
@@ -6,7 +7,7 @@ const adjustDate = (date: Date, days: number): Date => {
   return newDate
 }
 
-const getSchedule = async ({ competition }: { competition: string }) => {
+const getSchedule = async ({ competition }: { competition: Competition }) => {
   const url = `api/competitions/${competition}/matches`
 
   const res = await fetch(url, {

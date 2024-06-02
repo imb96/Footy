@@ -4,11 +4,12 @@ import { useRef, useState } from 'react'
 
 import Image from 'next/image'
 
-import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
-import { Team } from '@/types/Team'
 import Button from '@/components/Button'
+import useTeamRankQuery from '@/hooks/api/useTeamRankQuery'
+import type { Competition } from '@/types/match.types'
+import type { Team } from '@/types/team.types'
 
-const TeamRank = ({ competition }: { competition: string }) => {
+const TeamRank = ({ competition }: { competition: Competition }) => {
   const { data, isLoading, isError } = useTeamRankQuery({ competition })
   const [visibleTeams, setVisibleTeams] = useState(10)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -43,8 +44,7 @@ const TeamRank = ({ competition }: { competition: string }) => {
             width={40}
             height={40}
           />
-          <h1
-            className="text-2xl font-bold">{`Team Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
+          <h1 className="text-2xl font-bold">{`Team Rank (${data?.season.slice(-2)}/${parseInt(data?.season.slice(-2)) + 1})`}</h1>
         </div>
       </div>
       <div className="flex gap-2 items-center text-center font-bold">

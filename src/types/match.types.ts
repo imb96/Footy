@@ -26,3 +26,5 @@ export interface Match {
     emblem: string
   }
 }
+
+export type Competition = 'PL' | 'CL'

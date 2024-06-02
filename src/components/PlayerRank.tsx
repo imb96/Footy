@@ -3,11 +3,12 @@
 import Image from 'next/image'
 
 import usePlayerRankQuery from '@/hooks/api/usePlayerRankQuery'
-import { Scorer } from '@/types/Scorer'
+import type { Competition } from '@/types/match.types'
+import type { Scorer } from '@/types/scorer.types'
 
 import PlayerRankCard from './PlayerRankCard'
 
-const PlayerRank = ({ competition }: { competition: string }) => {
+const PlayerRank = ({ competition }: { competition: Competition }) => {
   const { data, isLoading, isError } = usePlayerRankQuery({ competition })
 
   if (isLoading) {

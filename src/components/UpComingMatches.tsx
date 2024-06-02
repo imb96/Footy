@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 import useScheduleQuery from '@/hooks/api/useScheduleQuery'
-import { Match } from '@/types/Match'
+import type { Match } from '@/types/match.types'
 
 import MatchCard from './MatchCard'
 

@@ -1,4 +1,6 @@
-const getPlayerRank = async ({ competition }: { competition: string }) => {
+import type { Competition } from '@/types/match.types'
+
+const getPlayerRank = async ({ competition }: { competition: Competition }) => {
   const url = `api/competitions/${competition}/scorers`
 
   const res = await fetch(url, {
