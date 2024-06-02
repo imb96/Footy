@@ -47,7 +47,7 @@ const UpComingMatches = ({ competition }: { competition: string }) => {
           {matches.map((match: Match) => (
             <MatchCard
               key={match.id}
-              date={match.utcDate}
+              date={new Date(match.utcDate)}
               status={match.status}
               homeTeamName={match.homeTeam.name}
               homeTeamShortName={match.homeTeam.shortName}

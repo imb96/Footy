@@ -3,7 +3,7 @@ import Image from 'next/image'
 import formatDate from '@/utils/formatDate'
 
 interface MatchCardProps {
-  date: string
+  date: Date
   status: string
   homeTeamName: string
   homeTeamCrest: string
@@ -24,19 +24,19 @@ const formatScore = ({ status, score }: { status: string; score: string }) => {
 }
 
 const MatchCard = ({
-  date,
-  status,
-  homeTeamName,
-  homeTeamShortName,
-  homeTeamTla,
-  homeTeamCrest,
-  homeTeamScore,
-  awayTeamName,
-  awayTeamShortName,
-  awayTeamTla,
-  awayTeamCrest,
-  awayTeamScore,
-}: MatchCardProps) => {
+                     date,
+                     status,
+                     homeTeamName,
+                     homeTeamShortName,
+                     homeTeamTla,
+                     homeTeamCrest,
+                     homeTeamScore,
+                     awayTeamName,
+                     awayTeamShortName,
+                     awayTeamTla,
+                     awayTeamCrest,
+                     awayTeamScore,
+                   }: MatchCardProps) => {
   return (
     <div className="flex items-center justify-start">
       <div className="p-1 w-[120px]">
@@ -71,10 +71,10 @@ const MatchCard = ({
         <span
           className={`
             ${
-              status === 'FINISHED' &&
-              homeTeamScore > awayTeamScore &&
-              'text-red-500'
-            }`}
+            status === 'FINISHED' &&
+            homeTeamScore > awayTeamScore &&
+            'text-red-500'
+          }`}
         >
           {formatScore({ status, score: homeTeamScore })}
         </span>
@@ -82,10 +82,10 @@ const MatchCard = ({
         <span
           className={`
             ${
-              status === 'FINISHED' &&
-              awayTeamScore > homeTeamScore &&
-              'text-red-500'
-            }`}
+            status === 'FINISHED' &&
+            awayTeamScore > homeTeamScore &&
+            'text-red-500'
+          }`}
         >
           {formatScore({
             status,
